@@ -10,4 +10,4 @@ This is a user-friendly To-Do List web application built using HTML, CSS, JavaSc
 
 ## ToDo List Design
 
-<img src="calculator-screenshot.png" alt="ToDo List Design" width="600" />
+<img src="todo-list-screenshot.png" alt="ToDo List Design" width="450" />
