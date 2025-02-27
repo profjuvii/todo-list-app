@@ -5,22 +5,18 @@
     font-family: "Poppins", sans-serif;
 }
 
-body {
-    height: 100vh;
-    background: radial-gradient(at top left, #9933ff, #6666ff);
-    background-size: cover;
-}
-
 h1 {
     font-size: 32px;
 }
 
 .main-block {
     max-width: 400px;
+    height: calc(100vh - 200px);
     padding: 30px;
-    margin: 100px auto 0 auto;
-    border-radius: 4px;
+    margin: 100px auto;
+    border-radius: 24px;
     background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
 }
 
 .add-task-area {
@@ -58,6 +54,9 @@ h1 {
 
 #task-list {
     width: 100%;
+    height: calc(100vh - 200px - 188px);
+    overflow-y: auto;
+    white-space: nowrap;
     font-size: 13px;
 }
 
@@ -65,7 +64,7 @@ h1 {
     position: relative;
     width: 100%;
     padding: 10px;
-    margin-bottom: 8px;
+    margin-top: 8px;
     background-color: rgb(240, 240, 240);
     border-radius: 4px;
 }
