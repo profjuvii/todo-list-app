@@ -13,6 +13,15 @@ This is a user-friendly To-Do List web application built using HTML, CSS, JavaSc
 
 <img src="todo-list-app-screenshot.png" alt="ToDo List App Design" width="450" />
 
+## Components
+
+The application consists of the following components:
+
+- **Client:** A front-end built with HTML, CSS, and JavaScript that provides an interactive UI for users to manage their tasks.
+- **Server:** A Node.js-based back-end that handles API requests and communicates with the database.
+- **Database (MongoDB):** A NoSQL database that stores user tasks and their statuses.
+- **Docker:** A containerized environment that facilitates easy deployment and management of the application.
+
 ## Setup and Running
 
 **1. Preparing the Environment**:  
