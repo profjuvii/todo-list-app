@@ -15,13 +15,13 @@ This is a user-friendly To-Do List web application built using HTML, CSS, JavaSc
 
 ## Setup and Running
 
-**1. Preparing the Environment**:
+**1. Preparing the Environment**:  
 Before running the application, you need to build the Docker images and set up the necessary resources:  
 ```bash
 ./prepare-app.sh
 ```
 
-**2. Starting the Application**:
+**2. Starting the Application**:  
 To launch all services (client, server, and database), run:  
 ```bash
 ./start-app.sh
@@ -29,7 +29,7 @@ To launch all services (client, server, and database), run:
 Once started, the application will be available in your browser:  
 👉 **http://localhost**
 
-**3. Stopping the Application**:
+**3. Stopping the Application**:  
 To stop all running containers, use:  
 ```bash
 ./end-app.sh
