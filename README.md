@@ -26,8 +26,7 @@ To launch all services (client, server, and database), run:
 ```bash
 ./start-app.sh
 ```
-Once started, the application will be available in your browser:  
-👉 **http://localhost**
+Once started, the application will be available in your browser: **http://localhost**
 
 **3. Stopping the Application**:  
 To stop all running containers, use:  
