@@ -3,6 +3,7 @@
 [![css3](https://img.shields.io/badge/css3-1572B6?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![node.js](https://img.shields.io/badge/node.js-8CC84B?style=flat&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![mongodb](https://img.shields.io/badge/mongodb-47A248?style=flat&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![docker](https://img.shields.io/badge/docker-2496ED?style=flat&logo=docker&logoColor=white)](https://www.docker.com/)
 
 # ToDo List Web Application
 
@@ -14,34 +15,25 @@ This is a user-friendly To-Do List web application built using HTML, CSS, JavaSc
 
 ## Setup and Running
 
-1. **Backend**:
-   - Navigate to the `server/` folder:  
-     ```bash
-     cd server
-     ```
-   - Install Node.js if it is not already installed on your system: [Node.js Official Website](https://nodejs.org/en).  
-   - Install the necessary dependencies:  
-     ```bash
-     npm install
-     ```
-     > Thanks to `package.json`, all required packages will be installed automatically.  
-   - Before starting the server, change a `.env` file in the `/server` directory and specify the following environment variables:
-     ```plaintext
-     MONGO_URI=mongodb://<user>:<password>@<host>:<port>/<db>
-     PORT=<port_number>
-     ```
-     This ensures the server correctly connects to the database and runs on the specified port.  
-   - Start the server directly using `app.js`:  
-     ```bash
-     node app.js
-     ```
+**1. Preparing the Environment**:
+Before running the application, you need to build the Docker images and set up the necessary resources:  
+```bash
+./prepare-app.sh
+```
 
-2. **Frontend**:  
-   - Open `index.html` in a browser or start a local server to work with the frontend.  
+**2. Starting the Application**:
+To launch all services (client, server, and database), run:  
+```bash
+./start-app.sh
+```
+Once started, the application will be available in your browser:  
+👉 **http://localhost**
 
-> [!IMPORTANT]
->
-> Before starting the client-side part, make sure to start the server (`app.js`) in the `server/` folder!
+**3. Stopping the Application**:
+To stop all running containers, use:  
+```bash
+./end-app.sh
+```
 
 ## Author
 
