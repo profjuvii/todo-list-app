@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
 
+const PORT = process.env.PORT;
+
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -11,9 +13,9 @@ app.use(cors());
 mongoose
     .connect(process.env.MONGO_URI)
     .then(() => console.log("MongoDB: OK"))
-    .catch((err) => console.error("Error:", err));
+    .catch((error) => console.error("Error:", error));
 
-// Object schema
+// Task schema
 const TaskSchema = new mongoose.Schema(
     {
         text: { type: String, required: true },
@@ -26,45 +28,54 @@ const TaskSchema = new mongoose.Schema(
 const Task = mongoose.model("Task", TaskSchema);
 
 // GET request
-app.get("/tasks", async (_, res) => {
+app.get("/getTasks", async (_, res) => {
     try {
         const tasks = await Task.find();
-        res.json(tasks);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(200).json(tasks);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
 });
 
 // POST request
-app.post("/tasks", async (req, res) => {
+app.post("/addNewTask", async (req, res) => {
     try {
-        const newTask = new Task(req.body);
+        const { text } = req.body;
+        if (!text) {
+            return res.status(400).json({ message: "Task text is required" });
+        }
+
+        const newTask = new Task({ text });
         await newTask.save();
-        res.status(201).json(newTask);
-    } catch (err) {
-        res.status(400).json({ message: err.message });
+
+        res.status(201).json({ newTask: newTask, message: "New task added successfully" });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
 });
 
 // DELETE request
-app.delete("/tasks/:id", async (req, res) => {
+app.delete("/deleteTask/:id", async (req, res) => {
     try {
         const { id } = req.params;
+
         const deletedTask = await Task.findByIdAndDelete(id);
         if (!deletedTask) {
             return res.status(404).json({ message: "Task not found" });
         }
+
         res.status(200).json({ message: "Task deleted successfully" });
-    } catch (err) {
-        res.status(500).json({ message: err.message });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
 });
 
 // PATCH request
-app.patch("/tasks/:id", async (req, res) => {
+app.patch("/changeTaskState/:id", async (req, res) => {
     try {
         const { id } = req.params;
         const { done } = req.body;
+
         const updatedTask = await Task.findByIdAndUpdate(
             id,
             { done },
@@ -73,11 +84,11 @@ app.patch("/tasks/:id", async (req, res) => {
         if (!updatedTask) {
             return res.status(404).json({ message: "Task not found" });
         }
-        res.status(200).json(updatedTask);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
+
+        res.status(200).json({ message: "Task state successfully changed" });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
 });
 
-const PORT = process.env.PORT;
-app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));
+app.listen(PORT, () => console.log(`Server is running on: http://localhost:${PORT}`));
