@@ -35,6 +35,13 @@ To stop all running containers, use:
 ./end-app.sh
 ```
 
+> [!IMPORTANT]
+>
+> Make sure the scripts have execution permissions before running them:  
+> ```bash
+> chmod +x prepare-app.sh start-app.sh end-app.sh
+> ```
+
 ## Author
 
 Created by [Denys Bondarchuk](https://github.com/profjuvii). If you have any questions or suggestions, feel free to contact me.
